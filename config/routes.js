@@ -3,6 +3,7 @@ const { about } = require('../controllers/about');
 const { create, post } = require('../controllers/create');
 const { details } = require('../controllers/details');
 const { edit, editPost } = require('../controllers/edit');
+const { post: commentPost } = require('../controllers/comments')
 const { notFound } = require('../controllers/notFound');
 
 module.exports = (app) => {
@@ -15,6 +16,8 @@ module.exports = (app) => {
 
     app.get('/edit/:id', edit);
     app.post('/edit/:id', editPost);
+
+    app.post('/comments/:cubeId/create', commentPost)
 
     app.all('*', notFound);
 };
